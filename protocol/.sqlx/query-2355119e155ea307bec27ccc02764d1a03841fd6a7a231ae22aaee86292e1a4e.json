@@ -1,0 +1,72 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                INSERT INTO task_call_metrics (\n                    task_id,\n                    call_duration,\n                    time_to_answer,\n                    total_employee_speech,\n                    total_client_speech,\n                    employee_client_speech_ratio,\n                    employee_speech_ratio,\n                    client_speech_ratio,\n                    call_holds_count,\n                    silence_pause_count,\n                    total_employee_silence,\n                    client_interruptions_count,\n                    total_client_interruptions_duration,\n                    avg_employee_words_per_min,\n                    avg_client_words_per_min,\n                    script_score,\n                    employee_quality_score,\n                    emotion_mode,\n                    emotion_start_mode,\n                    emotion_end_mode\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, \n                    $12, $13, $14, $15, $16, $17, \n                    $18::call_metrics_emotion_type, \n                    $19::call_metrics_emotion_type,\n                    $20::call_metrics_emotion_type\n                )\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        "Float4",
+        "Float4",
+        "Float4",
+        "Float4",
+        "Float4",
+        "Float4",
+        "Float4",
+        "Int4",
+        "Int4",
+        "Float4",
+        "Int4",
+        "Float4",
+        "Float4",
+        "Float4",
+        "Int4",
+        "Int4",
+        {
+          "Custom": {
+            "name": "call_metrics_emotion_type",
+            "kind": {
+              "Enum": [
+                "neutral",
+                "positive",
+                "angry",
+                "sad",
+                "other"
+              ]
+            }
+          }
+        },
+        {
+          "Custom": {
+            "name": "call_metrics_emotion_type",
+            "kind": {
+              "Enum": [
+                "neutral",
+                "positive",
+                "angry",
+                "sad",
+                "other"
+              ]
+            }
+          }
+        },
+        {
+          "Custom": {
+            "name": "call_metrics_emotion_type",
+            "kind": {
+              "Enum": [
+                "neutral",
+                "positive",
+                "angry",
+                "sad",
+                "other"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "2355119e155ea307bec27ccc02764d1a03841fd6a7a231ae22aaee86292e1a4e"
+}

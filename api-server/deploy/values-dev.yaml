@@ -1,0 +1,41 @@
+image:
+  name: artifactory.xxx/docker-registry/api-server
+  migrationsName: artifactory.xxx/docker-registry/api-server-migration
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.1.4"
+  migrationsTag: "v0.1.1"
+
+replicaCount: 1
+
+env:
+  RUST_LOG: "debug"
+  RUST_BACKTRACE: "full"
+  DATABASE_URL: "postgres://postgres:P92fWpbDxASyJ1oYgVwV@pg-postgresql-hl:5432/call-ai"
+  RABBITMQ_URL: "amqp://admin:Z1cHdouLqQHxmF7X9i3z@rmq-rabbitmq-headless:5672"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+resources: {}
+
+service:
+  port: 8080
+
+db:
+  size: 5
+  idle_size: 5
+  timeout: 5s
+  max_lifetime: 12h
+
+workerUrl: "http://worker.dev.svc.cluster.local:8080"

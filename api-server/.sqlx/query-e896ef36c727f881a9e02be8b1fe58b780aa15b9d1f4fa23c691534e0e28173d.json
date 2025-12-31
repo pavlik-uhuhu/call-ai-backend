@@ -1,0 +1,14 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                DELETE FROM settings_dict_item\n                WHERE settings_item_id = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "e896ef36c727f881a9e02be8b1fe58b780aa15b9d1f4fa23c691534e0e28173d"
+}

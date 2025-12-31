@@ -1,0 +1,34 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT task_id, dictionary_id, contains \n                FROM task_to_dict\n                WHERE task_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "task_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "dictionary_id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "contains",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "917924efd38a03d50e6d710aac2df5b68536d980c35040ab60a136cf972eef82"
+}

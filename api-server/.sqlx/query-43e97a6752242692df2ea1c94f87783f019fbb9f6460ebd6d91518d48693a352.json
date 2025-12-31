@@ -1,0 +1,69 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT si.id, si.settings_id, si.settings_immutable, \n                    si.type as \"type: SettingsItemKind\", si.name, si.score_weight\n                FROM settings_item si\n                JOIN settings on si.settings_id = settings.id\n                WHERE project_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "settings_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 2,
+        "name": "settings_immutable",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 3,
+        "name": "type: SettingsItemKind",
+        "type_info": {
+          "Custom": {
+            "name": "settings_item_type",
+            "kind": {
+              "Enum": [
+                "speech_rate_ratio",
+                "call_holds",
+                "silence_pauses",
+                "interruptions",
+                "lacking_info_dict",
+                "filler_words_dict",
+                "slurred_speech_dict",
+                "profanity_speech_dict",
+                "dictionary"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 4,
+        "name": "name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 5,
+        "name": "score_weight",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "43e97a6752242692df2ea1c94f87783f019fbb9f6460ebd6d91518d48693a352"
+}

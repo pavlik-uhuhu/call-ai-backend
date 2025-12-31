@@ -1,0 +1,70 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                INSERT INTO task\n                    (call_metadata_id, status, project_id)\n                VALUES ($1, $2::task_result_status, $3)\n                RETURNING\n                    id,\n                    call_metadata_id,\n                    status as \"status: TaskResultKind\",\n                    failed_reason,\n                    project_id\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "call_metadata_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 2,
+        "name": "status: TaskResultKind",
+        "type_info": {
+          "Custom": {
+            "name": "task_result_status",
+            "kind": {
+              "Enum": [
+                "processing",
+                "ready",
+                "failed"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "failed_reason",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 4,
+        "name": "project_id",
+        "type_info": "Uuid"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        {
+          "Custom": {
+            "name": "task_result_status",
+            "kind": {
+              "Enum": [
+                "processing",
+                "ready",
+                "failed"
+              ]
+            }
+          }
+        },
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      true,
+      false
+    ]
+  },
+  "hash": "702a4fd27edccc98832c2c0d97aaf24d10f4b305821c936934917a9d86600b4e"
+}

@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "api-server",
+    "protocol",
+    "worker"
+]
+
+[profile.release]
+debug = true

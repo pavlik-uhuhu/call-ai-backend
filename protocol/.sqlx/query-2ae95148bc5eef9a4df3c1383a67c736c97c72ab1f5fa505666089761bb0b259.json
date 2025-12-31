@@ -1,0 +1,44 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT\n                    id,\n                    name,\n                    participant as \"participant: ParticipantKind\"\n                FROM dictionary \n                WHERE id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 1,
+        "name": "name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 2,
+        "name": "participant: ParticipantKind",
+        "type_info": {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "2ae95148bc5eef9a4df3c1383a67c736c97c72ab1f5fa505666089761bb0b259"
+}

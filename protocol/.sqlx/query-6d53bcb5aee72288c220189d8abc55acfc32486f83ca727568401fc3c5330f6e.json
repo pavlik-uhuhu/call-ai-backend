@@ -1,0 +1,175 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT \n                    task_id,\n                    call_duration,\n                    time_to_answer,\n                    total_employee_speech,\n                    total_client_speech,\n                    employee_client_speech_ratio,\n                    employee_speech_ratio,\n                    client_speech_ratio,\n                    call_holds_count,\n                    silence_pause_count,\n                    total_employee_silence,\n                    client_interruptions_count,\n                    total_client_interruptions_duration,\n                    avg_employee_words_per_min,\n                    avg_client_words_per_min,\n                    script_score,\n                    employee_quality_score,\n                    emotion_mode as \"emotion_mode: EmotionKind\",\n                    emotion_start_mode as \"emotion_start_mode: EmotionKind\",\n                    emotion_end_mode as \"emotion_end_mode: EmotionKind\"\n                FROM task_call_metrics\n                WHERE task_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "task_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "call_duration",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 2,
+        "name": "time_to_answer",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 3,
+        "name": "total_employee_speech",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 4,
+        "name": "total_client_speech",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 5,
+        "name": "employee_client_speech_ratio",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 6,
+        "name": "employee_speech_ratio",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 7,
+        "name": "client_speech_ratio",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 8,
+        "name": "call_holds_count",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 9,
+        "name": "silence_pause_count",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 10,
+        "name": "total_employee_silence",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 11,
+        "name": "client_interruptions_count",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 12,
+        "name": "total_client_interruptions_duration",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 13,
+        "name": "avg_employee_words_per_min",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 14,
+        "name": "avg_client_words_per_min",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 15,
+        "name": "script_score",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 16,
+        "name": "employee_quality_score",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 17,
+        "name": "emotion_mode: EmotionKind",
+        "type_info": {
+          "Custom": {
+            "name": "call_metrics_emotion_type",
+            "kind": {
+              "Enum": [
+                "neutral",
+                "positive",
+                "angry",
+                "sad",
+                "other"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 18,
+        "name": "emotion_start_mode: EmotionKind",
+        "type_info": {
+          "Custom": {
+            "name": "call_metrics_emotion_type",
+            "kind": {
+              "Enum": [
+                "neutral",
+                "positive",
+                "angry",
+                "sad",
+                "other"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 19,
+        "name": "emotion_end_mode: EmotionKind",
+        "type_info": {
+          "Custom": {
+            "name": "call_metrics_emotion_type",
+            "kind": {
+              "Enum": [
+                "neutral",
+                "positive",
+                "angry",
+                "sad",
+                "other"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "6d53bcb5aee72288c220189d8abc55acfc32486f83ca727568401fc3c5330f6e"
+}

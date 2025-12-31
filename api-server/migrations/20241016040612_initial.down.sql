@@ -1,0 +1,3 @@
+DROP TABLE dictionary CASCADE;
+
+DROP TABLE phrase CASCADE;

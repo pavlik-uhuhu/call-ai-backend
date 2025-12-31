@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT sdi.id, sdi.settings_item_id, sdi.dictionary_id, sdi.contains\n                FROM settings_dict_item sdi \n                JOIN settings_item on settings_item.id = sdi.settings_item_id \n                JOIN settings on settings.id = settings_item.settings_id\n                WHERE project_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "settings_item_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 2,
+        "name": "dictionary_id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 3,
+        "name": "contains",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "8082636cd1e9cc06d93e9f7b030ae403f3e18e3f48806e2b75916e75b38c4a0b"
+}

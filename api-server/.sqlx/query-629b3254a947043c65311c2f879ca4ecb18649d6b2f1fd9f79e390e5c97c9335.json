@@ -1,0 +1,114 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT                 \n                call_metadata.id as metadata_id,\n                call_id,\n                performed_at,\n                uploaded_at,\n                file_hash,\n                file_url,\n                file_name,\n                duration,\n                left_channel as \"left_channel: ParticipantKind\",\n                right_channel as \"right_channel: ParticipantKind\",\n                client_name,\n                employee_name,\n                inbound\n            FROM call_metadata\n            JOIN task ON task.call_metadata_id = call_metadata.id\n            WHERE task.id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "metadata_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "call_id",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 2,
+        "name": "performed_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 3,
+        "name": "uploaded_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 4,
+        "name": "file_hash",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 5,
+        "name": "file_url",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 6,
+        "name": "file_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 7,
+        "name": "duration",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 8,
+        "name": "left_channel: ParticipantKind",
+        "type_info": {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "right_channel: ParticipantKind",
+        "type_info": {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "client_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 11,
+        "name": "employee_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 12,
+        "name": "inbound",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "629b3254a947043c65311c2f879ca4ecb18649d6b2f1fd9f79e390e5c97c9335"
+}

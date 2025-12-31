@@ -1,0 +1,14 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                DELETE FROM phrase\n                WHERE dictionary_id = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "ce7a7d1a1aeee81a601111ecdc834f14ee1f799733259a4c49294b133e3fbc72"
+}

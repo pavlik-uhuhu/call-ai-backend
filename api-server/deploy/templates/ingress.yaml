@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "api-server.name" . }}
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 300m
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: {{ include "api-server.name" . }}.dev.call-ai.*.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "api-server.name" . }}
+                port:
+                  number: {{ .Values.service.port }}

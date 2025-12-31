@@ -1,0 +1,23 @@
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# Rust
+/target
+*/target/
+
+# Project
+App.toml
+/docs/book
+.idea
+.vscode
+.env
+index
+*/App*

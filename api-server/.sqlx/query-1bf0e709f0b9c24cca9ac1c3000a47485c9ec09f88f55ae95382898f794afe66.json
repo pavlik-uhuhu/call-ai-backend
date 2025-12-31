@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                UPDATE settings_item\n                SET\n                    name = $2,\n                    score_weight = $3\n                WHERE id = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        "Text",
+        "Int4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "1bf0e709f0b9c24cca9ac1c3000a47485c9ec09f88f55ae95382898f794afe66"
+}

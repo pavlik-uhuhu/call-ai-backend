@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                INSERT INTO task_to_dict\n                    (task_id, dictionary_id, contains)\n                SELECT task_id, dictionary_id, contains\n                FROM UNNEST($1::uuid[], $2::int[], $3::bool[]) as a(task_id, dictionary_id, contains)\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "UuidArray",
+        "Int4Array",
+        "BoolArray"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "fff6b022c99736cdc3fa97dea1fd6046e088b340944ade05d03646be3fbfec9f"
+}

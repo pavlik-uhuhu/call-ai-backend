@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT COUNT(1) as total\n                FROM task_call_metrics\n                JOIN task ON task.id = task_call_metrics.task_id\n                WHERE project_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "total",
+        "type_info": "Int8"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "a19e0f71637a63a8412de6180a83d8f9924c8e51a82c5e9668e9207cfa8990bd"
+}

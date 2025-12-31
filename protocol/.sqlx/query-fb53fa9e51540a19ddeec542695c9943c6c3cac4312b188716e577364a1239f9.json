@@ -1,0 +1,145 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            INSERT INTO call_metadata (\n                call_id,\n                performed_at, uploaded_at, \n                file_hash, file_url, file_name, \n                duration, \n                left_channel, right_channel, \n                client_name, employee_name, \n                inbound\n            )\n            VALUES ($1, $2, $3, $4, $5, $6, $7, $8::participant_type, $9::participant_type, $10, $11, $12)\n            RETURNING\n                id as metadata_id,\n                call_id,\n                performed_at,\n                uploaded_at,\n                file_hash,\n                file_url,\n                file_name,\n                duration,\n                left_channel as \"left_channel: ParticipantKind\",\n                right_channel as \"right_channel: ParticipantKind\",\n                client_name,\n                employee_name,\n                inbound\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "metadata_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "call_id",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 2,
+        "name": "performed_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 3,
+        "name": "uploaded_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 4,
+        "name": "file_hash",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 5,
+        "name": "file_url",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 6,
+        "name": "file_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 7,
+        "name": "duration",
+        "type_info": "Float4"
+      },
+      {
+        "ordinal": 8,
+        "name": "left_channel: ParticipantKind",
+        "type_info": {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 9,
+        "name": "right_channel: ParticipantKind",
+        "type_info": {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 10,
+        "name": "client_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 11,
+        "name": "employee_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 12,
+        "name": "inbound",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int8",
+        "Timestamptz",
+        "Timestamptz",
+        "Text",
+        "Text",
+        "Text",
+        "Float4",
+        {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        },
+        {
+          "Custom": {
+            "name": "participant_type",
+            "kind": {
+              "Enum": [
+                "client",
+                "employee"
+              ]
+            }
+          }
+        },
+        "Text",
+        "Text",
+        "Bool"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "fb53fa9e51540a19ddeec542695c9943c6c3cac4312b188716e577364a1239f9"
+}

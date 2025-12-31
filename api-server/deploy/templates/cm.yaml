@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    {{- include "api-server.labels" . | nindent 4 }}
+  name: {{ include "api-server.name" . }}
+data:
+  App.toml: |
+    [http]
+    api_listener_address = "0.0.0.0:{{ .Values.service.port }}"
+
+    [worker_app]
+    url = {{ .Values.workerUrl | quote }}
+    timeout = "5m"
+
+    {{- println "" }}
+
+    {{- with .Values.db }}
+    [db]
+    size = {{ .size }}
+    idle_size = {{ .idle_size }}
+    timeout = {{ .timeout | quote }}
+    max_lifetime = {{ .max_lifetime | quote }}
+    {{- end }}
+
+
